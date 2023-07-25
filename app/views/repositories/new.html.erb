@@ -1,0 +1,14 @@
+<h1>New Repository</h1>
+<%= simple_form_for(@repository) do |f| %>
+  <%= f.input :name %>
+
+  <%= f.simple_fields_for :users do |user_fields| %>
+    <%= user_fields.input :first_name, label: "First Name" %>
+    <%= user_fields.input :last_name, label: "Last Name" %>
+    <%= user_fields.input :email, label: "User Email" %>
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>
+<br>
+<%= link_to 'Back', repositories_path %>
