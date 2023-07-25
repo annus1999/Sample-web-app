@@ -47,7 +47,7 @@ class RepositoriesController < ApplicationController
   private
 
   def set_repository
-    @repository = Repository.find(params[:id])
+    @repository = Repository.includes(:users).find(params[:id])
   end
 
   def repository_params

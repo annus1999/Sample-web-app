@@ -10,6 +10,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>User name</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,6 +19,11 @@
       <tr>
         <td><%= link_to repository.name, repository %></td>
         <td><%= repository.description %></td>
+        <td>
+          <% repository.users.each do |user| %>
+            <%= user.first_name + '' + user.last_name %><br>
+          <% end %>
+        </td>
         <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
         <td><%= link_to 'Destroy', repository, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
