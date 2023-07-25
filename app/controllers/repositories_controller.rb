@@ -2,8 +2,13 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
 
   def index
-    @repositories = Repository.all
+    if params[:search]
+      @repositories = Repository.search_by_name_or_description(params[:search])
+    else
+      @repositories = Repository.all
+    end
   end
+
 
   def show
   end
